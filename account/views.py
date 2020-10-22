@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
 from .forms import LoginForm, UserRegistrationForm
+from .models import Profile
 
 
 def user_login(request):
@@ -44,6 +45,8 @@ def register(request):
             )
             # Save the User object
             new_user.save()
+            # Create the user profile
+            Profile.objects.create(user=new_user)
 
             return render(request, 'account/register_done.html', {'new_user': new_user})
 
