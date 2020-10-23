@@ -50,6 +50,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Bookmarks.urls'
 
+AUTHENTICATION_BACKEND = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentications.EmailAuthBackend',
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
